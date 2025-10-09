@@ -10,6 +10,7 @@ import { DatabaseModule } from './common/database';
     DatabaseModule,
     CacheModule.register({
       isGlobal: true,
+      ttl: 86400,
     }),
   ],
   providers: [
