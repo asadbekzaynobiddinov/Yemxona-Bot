@@ -13,6 +13,7 @@ import {
   contactText,
   uncorrectPhoneMessage,
   noAdminRights,
+  referalMenu,
 } from 'src/common/constants';
 import { Markup } from 'telegraf';
 
@@ -51,6 +52,18 @@ export class UserMessages {
         });
         return;
       }
+      case '🔗 Referal tizimi':
+      case '🔗 Реферал тизими':
+        if (user.role != 'admin') return;
+        ctx.session.lastMessage = await ctx.reply(
+          chooseDepartment[user.lang] as string,
+          {
+            reply_markup: {
+              inline_keyboard: [...referalMenu[user.lang].inline_keyboard],
+              remove_keyboard: true,
+            },
+          },
+        );
     }
     switch (user.lastState) {
       case 'awaitName':

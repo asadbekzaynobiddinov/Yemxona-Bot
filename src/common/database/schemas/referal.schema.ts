@@ -8,6 +8,9 @@ export class Referal extends Document {
 
   @Prop({ required: true })
   referalBody: string;
+
+  @Prop()
+  createdAt: string;
 }
 
 export const ReferalSchema = SchemaFactory.createForClass(Referal);
